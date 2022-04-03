@@ -30,12 +30,9 @@ namespace DiscordRamLimiter
             while (true)
             {
                 if (GetDiscord() != -1)
-                {
-                    //Para este executavel
+                {                    
                     GC.Collect();
                     GC.WaitForPendingFinalizers();
-
-                    //Para o executavel do Discord
                     if (Environment.OSVersion.Platform == PlatformID.Win32NT)
                     {
                         SetProcessWorkingSetSize(Process.GetProcessById(GetDiscord()).Handle, -1, -1);
